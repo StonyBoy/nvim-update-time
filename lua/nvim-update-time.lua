@@ -16,6 +16,9 @@ local Module = {
 local function set_buffer_time_stamp(bufno, lineno, byteno, line)
   local startrow = lineno - 1
   local startcol = #Module.options.pattern + byteno
+  if Module.options.pattern:sub(1, 1) == '^' then
+    startcol = startcol - 1
+  end
   local endcol = #line
 
   if startcol == #line then
