@@ -36,12 +36,12 @@ This is how to add the plugin with Lazy (https://github.com/folke/lazy.nvim):
 
 The plugin accepts a table containing the following properties:
 
-| Property         | Type      | Default value       | Description                                                                                                                                                                                                                            |
-| ---------------- | ----------| ------------------- | ---------------------------------------------------------------------- |
-| first            | Integer   | 0                   | The first line number in the search range. Zero based.                 |
-| last             | Integer   | 10                  | The last line number in the search range. Zero based.                  |
-| pattern          | String    | 'Time-Stamp: '      | The text string used to locate the timestamp.                          |
-| format           | String    | '%Y-%b-%d %H:%M'    | The format string used to generate the timestamp. See :help strftime   |
+| Property         | Type      | Default value         | Description                                                                                                                                                                                                                            |
+| ---------------- | ----------| ----------------------| ---------------------------------------------------------------------- |
+| first            | Integer   | 0                     | The first line number in the search range. Zero based.                 |
+| last             | Integer   | 10                    | The last line number in the search range. Zero based.                  |
+| pattern          | String    | '[Tt]ime[-]*[Ss]tamp: | The text string used to locate the timestamp.                          |
+| format           | String    | '%Y-%b-%d %H:%M'      | The format string used to generate the timestamp. See :help strftime   |
 
 ## User commands
 
