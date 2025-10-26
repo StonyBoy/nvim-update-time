@@ -1,5 +1,5 @@
 -- Steen Hegelund
--- Time-Stamp: 2023-Jan-06 00:01
+-- Time-Stamp: 2025-Oct-26 12:57
 -- Update a Timestamp in the beginning of a file
 -- vim: set ts=2 sw=2 sts=2 tw=120 et cc=120 ft=lua :
 
@@ -8,14 +8,14 @@ local Module = {
   options = {
     first = 0,
     last = 10,
-    pattern = 'Time-Stamp: ',
+    pattern = '[Tt]ime[-]*[Ss]tamp: ',
     format = '%Y-%b-%d %H:%M',
   }
 }
 
-local function set_buffer_time_stamp(bufno, lineno, byteno, line)
+local function set_buffer_time_stamp(bufno, lineno, end_idx, line)
   local startrow = lineno - 1
-  local startcol = #Module.options.pattern + byteno
+  local startcol = end_idx
   local endcol = #line
 
   if startcol == #line then
@@ -38,9 +38,9 @@ local function update_time_stamp(bufno)
 
   local regex = vim.regex(Module.options.pattern)
   for lineno, line in ipairs(lines) do
-    local byteno = regex:match_str(line)
-    if byteno then
-      set_buffer_time_stamp(bufno, lineno, byteno, line)
+    local start_idx, end_idx = regex:match_str(line)
+    if start_idx then
+      set_buffer_time_stamp(bufno, lineno, end_idx, line)
     end
   end
 end
